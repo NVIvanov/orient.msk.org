@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NonNull;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 /**
@@ -16,26 +15,15 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-public class Attachment {
+public class ModerationTrigger {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NonNull
-    @ManyToOne
-    private AttachmentType type;
-
-    @NonNull
-    @Size(min = 1, max = 300)
-    private String title;
-
-    @Size(max = 3000)
-    private String description;
-
-    @NonNull
-    @Size(min = 1, max = 300)
-    private String fileURL;
+    @OneToOne
+    private SystemUser user;
 
     @NonNull
     @Getter(AccessLevel.NONE)

@@ -16,17 +16,17 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Data
-public class AttachmentType {
+public class EventType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NonNull
-    @Size(min = 1, max = 300)
-    private String title;
+    @Size(min = 1, max = 2000)
+    private String description;
 
     @NonNull
-    @Size(min = 1, max = 300)
-    private String uploadFileMask;
+    @Size(min = 1, max = 2000)
+    private String eventPatternText;
 }
