@@ -1,0 +1,8 @@
+language: java
+jdk:
+  - oraclejdk8
+services:
+  - postgresql
+before_script:
+  - psql -c "CREATE DATABASE orientdb;" -U postgres
+  - psql -c "CREATE USER orientuser WITH PASSWORD 'orientpassword';" -U postgres
