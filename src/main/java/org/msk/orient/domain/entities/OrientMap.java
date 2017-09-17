@@ -1,13 +1,11 @@
 package org.msk.orient.domain.entities;
 
-import lombok.AccessLevel;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NonNull;
+import org.springframework.data.geo.Point;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
 
 /**
  * @author nivanov
@@ -16,28 +14,35 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-public class Attachment {
+public class OrientMap {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NonNull
-    @ManyToOne
-    private AttachmentType type;
-
-    @NonNull
     @Size(min = 1, max = 300)
     private String title;
 
-    @Size(max = 3000)
+    @Size(max = 2000)
     private String description;
 
     @NonNull
-    @Size(min = 1, max = 300)
-    private String fileURL;
+    private Point location;
 
     @NonNull
-    @Getter(AccessLevel.NONE)
-    private LocalDateTime creationTime = LocalDateTime.now();
+    @OneToOne
+    private Attachment preview;
+
+    @NonNull
+    @OneToOne
+    private Attachment lowQuality;
+
+    @NonNull
+    @OneToOne
+    private Attachment highQuality;
+
+    @NonNull
+    @ManyToOne
+    private SystemUser author;
 }

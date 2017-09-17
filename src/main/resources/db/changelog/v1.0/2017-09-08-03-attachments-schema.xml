@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="attachments_schema" author="nivanov">
+        <createTable tableName="attachments">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="type" type="BIGINT"/>
+            <column name="title" type="VARCHAR(300)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(2000)"/>
+            <column name="file_url" type="VARCHAR(300)"/>
+            <column name="creation_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="attachments"/>
+        </rollback>
+    </changeSet>
+    
+    <changeSet id="attachment_to_type_relation" author="nivanov">
+        <addForeignKeyConstraint baseTableName="attachment_types"
+                                 baseColumnNames="id"
+                                 constraintName="att_to_type_fk"
+                                 referencedTableName="attachments"
+                                 referencedColumnNames="type"/>
+        <rollback>
+            <dropAllForeignKeyConstraints baseTableName="attachment_types"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

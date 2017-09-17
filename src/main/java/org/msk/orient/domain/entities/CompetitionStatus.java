@@ -16,17 +16,12 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Data
-public class AttachmentType {
-
+public class CompetitionStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NonNull
-    @Size(min = 1, max = 300)
+    @Size(min = 1, max = 200)
     private String title;
-
-    @NonNull
-    @Size(min = 1, max = 300)
-    private String uploadFileMask;
 }

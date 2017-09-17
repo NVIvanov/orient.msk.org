@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NonNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 /**
@@ -19,8 +20,14 @@ public class SystemUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NonNull
+    @Size(min = 1, max = 300)
     private String email;
+
+    @NonNull
     private String password;
+
     private String name;
     private String phone;
     private Boolean enabled;
