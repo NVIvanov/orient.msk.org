@@ -63,7 +63,7 @@ public class Competition {
     private CompetitionStatus status;
 
     @NonNull
-    @ManyToOne
+    @OneToMany
     private List<Comment> comments;
 
     @NonNull
