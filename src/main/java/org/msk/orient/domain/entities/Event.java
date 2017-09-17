@@ -27,13 +27,14 @@ public class Event {
     private LocalDateTime time;
 
     @Getter(AccessLevel.NONE)
-    private List<String> arguments;
+    private String arguments;
 
     @NonNull
     @ManyToOne
     private EventType type;
 
     @NonNull
+    @OneToMany
     private List<Comment> comments = new ArrayList<>();
 
     public String getMessage() {
