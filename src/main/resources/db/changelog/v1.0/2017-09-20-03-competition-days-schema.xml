@@ -30,7 +30,7 @@
     <changeSet id="competition_days_fk" author="nivanov">
         <addForeignKeyConstraint baseTableName="competition_days"
                                  baseColumnNames="competition_id"
-                                 constraintName="competition_fk"
+                                 constraintName="compday_to_comp_fk"
                                  referencedTableName="competitions"
                                  referencedColumnNames="id"/>
         <rollback>

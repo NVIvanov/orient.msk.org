@@ -45,7 +45,7 @@
     <changeSet id="users_fk" author="nivanov">
         <addForeignKeyConstraint baseTableName="users"
                                  baseColumnNames="image_id"
-                                 constraintName="logo_fk" referencedTableName="attachments"
+                                 constraintName="user_to_logo_fk" referencedTableName="attachments"
                                  referencedColumnNames="id"/>
         <rollback>
             <dropAllForeignKeyConstraints baseTableName="users"/>

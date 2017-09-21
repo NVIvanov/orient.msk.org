@@ -28,15 +28,18 @@
     <changeSet id="documents_fk" author="nivanov">
         <addForeignKeyConstraint baseTableName="documents"
                                  baseColumnNames="competition_id"
-                                 constraintName="competition_fk"
+                                 constraintName="doc_to_comp_fk"
                                  referencedTableName="competitions"
                                  referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="documents"
                                  baseColumnNames="attachment_id"
-                                 constraintName="attachment_fk"
+                                 constraintName="doc_to_attachment_fk"
                                  referencedTableName="attachments"
                                  referencedColumnNames="id"/>
-        <dropAllForeignKeyConstraints baseTableName="documents"/>
+        <rollback>
+            <dropAllForeignKeyConstraints baseTableName="documents"/>
+        </rollback>
+
     </changeSet>
 
 </databaseChangeLog>

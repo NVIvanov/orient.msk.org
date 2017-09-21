@@ -1,10 +1,13 @@
 package org.msk.orient.domain.entities;
 
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NonNull;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -35,4 +38,9 @@ public class PhotoAlbum {
     @NonNull
     @ManyToOne
     private Competition competition;
+
+    @NonNull
+    @Setter(AccessLevel.NONE)
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime creationTime;
 }
