@@ -17,5 +17,8 @@
     <include file="db/changelog/v1.0/2017-09-21-04-maps-schema.xml"/>
     <include file="db/changelog/v1.0/2017-09-20-01-comments-schema.xml"/>
     <include file="db/changelog/v1.0/2017-09-21-05-albums-photos-schema.xml"/>
+    <include file="db/changelog/v1.0/2017-09-21-06-attachment-types-data.xml"/>
+    <include file="db/changelog/v1.0/2017-09-21-07-competition-statuses-data.xml"/>
+    <include file="db/changelog/v1.0/2017-09-21-08-event-types-data.xml"/>
 
 </databaseChangeLog>

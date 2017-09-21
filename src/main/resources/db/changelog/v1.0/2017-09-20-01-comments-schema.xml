@@ -30,11 +30,11 @@
     <changeSet id="comments_table_fk" author="nivanov">
         <addForeignKeyConstraint baseTableName="comments"
                                  baseColumnNames="author_id"
-                                 constraintName="author_fk"
+                                 constraintName="comment_to_author_fk"
                                  referencedTableName="users"
                                  referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="comments" baseColumnNames="event_id"
-                                 constraintName="event_fk" referencedTableName="events"
+                                 constraintName="comment_to_event_fk" referencedTableName="events"
                                  referencedColumnNames="id"/>
         <rollback>
             <dropAllForeignKeyConstraints baseTableName="comments"/>

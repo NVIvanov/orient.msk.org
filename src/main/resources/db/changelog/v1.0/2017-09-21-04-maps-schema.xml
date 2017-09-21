@@ -37,24 +37,27 @@
     <changeSet id="maps_fk" author="nivanov">
         <addForeignKeyConstraint baseTableName="maps"
                                  baseColumnNames="preview_id"
-                                 constraintName="preview_fk"
+                                 constraintName="map_to_preview_fk"
                                  referencedTableName="attachments"
                                  referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="maps"
                                  baseColumnNames="low_quality_id"
-                                 constraintName="low_quality_fk"
+                                 constraintName="map_to_low_quality_fk"
                                  referencedTableName="attachments"
                                  referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="maps"
                                  baseColumnNames="high_quality_id"
-                                 constraintName="high_quality_fk"
+                                 constraintName="map_to_high_quality_fk"
                                  referencedTableName="attachments"
                                  referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="maps"
                                  baseColumnNames="author_id"
-                                 constraintName="author_fk"
+                                 constraintName="map_to_author_fk"
                                  referencedTableName="users"
                                  referencedColumnNames="id"/>
+        <rollback>
+            <dropAllForeignKeyConstraints baseTableName="maps"/>
+        </rollback>
     </changeSet>
 
 </databaseChangeLog>

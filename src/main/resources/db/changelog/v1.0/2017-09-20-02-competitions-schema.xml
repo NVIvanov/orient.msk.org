@@ -36,12 +36,12 @@
     <changeSet id="competitions_fk" author="nivanov">
         <addForeignKeyConstraint baseTableName="competitions"
                                  baseColumnNames="logo_id"
-                                 constraintName="logo_fk"
+                                 constraintName="comp_to_logo_fk"
                                  referencedTableName="attachments"
                                  referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="competitions"
                                  baseColumnNames="status_id"
-                                 constraintName="competition_statuses_fk"
+                                 constraintName="comp_to_status_fk"
                                  referencedTableName="competition_statuses"
                                  referencedColumnNames="id"/>
         <rollback>

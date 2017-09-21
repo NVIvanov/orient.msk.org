@@ -1,22 +1,9 @@
-buildscript {
-	ext {
-		springBootVersion = '1.5.6.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
-}
-
 plugins {
 	id 'io.franzbecker.gradle-lombok' version '1.10'
+    id 'io.spring.dependency-management' version '1.0.1.RELEASE'
+    id 'org.springframework.boot' version '1.5.7.RELEASE'
+    id 'java'
 }
-
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -25,20 +12,27 @@ repositories {
 	mavenCentral()
 }
 
+dependencyManagement {
+    imports {
+        mavenBom 'org.apache.logging.log4j:log4j-bom:2.9.1'
+    }
+}
+
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-starter-hateoas')
-	compile('org.liquibase:liquibase-core')
-	compile('org.springframework.boot:spring-boot-starter-mail')
-	compile('org.springframework.boot:spring-boot-starter-security')
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-	compile('org.springframework.boot:spring-boot-starter-web')
+	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+	compile 'org.springframework.boot:spring-boot-starter-hateoas'
+	compile 'org.liquibase:liquibase-core'
+	compile 'org.springframework.boot:spring-boot-starter-mail'
+	compile 'org.springframework.boot:spring-boot-starter-security'
+	compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	compile 'org.springframework.boot:spring-boot-starter-web'
+    runtime 'org.postgresql:postgresql'
 
-	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.9.0'
-	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.9.0'
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
+	testCompile 'org.springframework.restdocs:spring-restdocs-mockmvc'
+	testCompile 'org.springframework.security:spring-security-test'
+}
 
-	runtime('org.postgresql:postgresql')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
-	testCompile('org.springframework.security:spring-security-test')
+task wrapper(type: Wrapper) {
+	gradleVersion = '4.2'
 }

@@ -30,15 +30,17 @@
     <changeSet id="events_fk" author="nivanov">
         <addForeignKeyConstraint baseTableName="events"
                                  baseColumnNames="competition_id"
-                                 constraintName="competition_fk"
+                                 constraintName="events_to_comp_fk"
                                  referencedTableName="competitions"
                                  referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="events"
                                  baseColumnNames="type_id"
-                                 constraintName="type_fk"
+                                 constraintName="event_to_type_fk"
                                  referencedTableName="event_types"
                                  referencedColumnNames="id"/>
-        <dropAllForeignKeyConstraints baseTableName="events"/>
+        <rollback>
+            <dropAllForeignKeyConstraints baseTableName="events"/>
+        </rollback>
     </changeSet>
 
 </databaseChangeLog>
