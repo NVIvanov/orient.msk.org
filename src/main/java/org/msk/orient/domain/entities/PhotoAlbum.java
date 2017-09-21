@@ -13,6 +13,7 @@ import java.util.List;
  */
 
 @Entity
+@Table(name = "albums")
 @Data
 public class PhotoAlbum {
 
@@ -30,4 +31,8 @@ public class PhotoAlbum {
     @NonNull
     @OneToMany
     private List<Attachment> photos;
+
+    @NonNull
+    @ManyToOne
+    private Competition competition;
 }

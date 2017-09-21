@@ -18,12 +18,15 @@ import static java.lang.String.format;
  */
 
 @Entity
+@Table(name = "events")
 @Data
 public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime time;
 
     @Getter(AccessLevel.NONE)
@@ -34,8 +37,8 @@ public class Event {
     private EventType type;
 
     @NonNull
-    @OneToMany
-    private List<Comment> comments = new ArrayList<>();
+    @ManyToOne
+    private Competition competition;
 
     public String getMessage() {
         return format(type.getEventPatternText(), arguments);

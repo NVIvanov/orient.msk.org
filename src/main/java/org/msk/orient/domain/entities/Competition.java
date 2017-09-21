@@ -1,9 +1,6 @@
 package org.msk.orient.domain.entities;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -17,6 +14,7 @@ import java.util.List;
  */
 
 @Entity
+@Table(name = "competitions")
 @Data
 public class Competition {
 
@@ -25,34 +23,37 @@ public class Competition {
     private Long id;
 
     @NonNull
-    @Size(min = 1, max = 300)
+    @Size(min = 1, max = 500)
     private String title;
 
-    @Size(max = 2000)
+    @Size(max = 10000)
     private String description;
     private String site;
     private String registrationLink;
 
     @NonNull
+    @Column(columnDefinition = "DATE")
+
     private LocalDate startDate;
 
     @NonNull
+    @Column(columnDefinition = "DATE")
     private LocalDate finishDate;
 
     @NonNull
     @Size(min = 1, max = 2000)
     private String location;
 
+    @Column(columnDefinition = "DATE")
     private LocalDate startRegistrationDate;
-    private LocalDate finishRegistrationDate;
+
+    @Column(columnDefinition = "DATE")
+    private LocalDate endRegistrationDate;
 
     @NonNull
-    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime creationTime = LocalDateTime.now();
-
-    @NonNull
-    @OneToMany
-    private List<Event> events;
 
     @NonNull
     @OneToOne
@@ -61,20 +62,4 @@ public class Competition {
     @NonNull
     @ManyToOne
     private CompetitionStatus status;
-
-    @NonNull
-    @OneToMany
-    private List<Comment> comments;
-
-    @NonNull
-    @OneToMany
-    private List<Document> documents;
-
-    @NonNull
-    @OneToMany
-    private List<PhotoAlbum> photoAlbums;
-
-    @NonNull
-    @OneToMany
-    private List<CompetitionDay> competitionDays;
 }

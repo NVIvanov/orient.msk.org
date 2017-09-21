@@ -4,35 +4,31 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-    <changeSet id="attachments_schema" author="nivanov">
-        <createTable tableName="attachments">
+    <changeSet id="albums_schema" author="nivanov">
+        <createTable tableName="albums">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="type_id" type="BIGINT"/>
             <column name="title" type="VARCHAR(300)">
                 <constraints nullable="false"/>
             </column>
             <column name="description" type="VARCHAR(2000)"/>
-            <column name="file_url" type="VARCHAR(300)"/>
-            <column name="creation_time" type="TIMESTAMP">
+            <column name="competition_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
         <rollback>
-            <dropTable tableName="attachments"/>
+            <dropTable tableName="albums"/>
         </rollback>
     </changeSet>
-    
-    <changeSet id="attachment_to_type_relation" author="nivanov">
-        <addForeignKeyConstraint baseTableName="attachments"
-                                 baseColumnNames="type_id"
-                                 constraintName="att_to_type_fk"
-                                 referencedTableName="attachment_types"
+
+    <changeSet id="albums_fk" author="nivanov">
+        <addForeignKeyConstraint baseTableName="albums"
+                                 baseColumnNames="competition_id"
+                                 constraintName="competition_fk"
+                                 referencedTableName="competitions"
                                  referencedColumnNames="id"/>
-        <rollback>
-            <dropAllForeignKeyConstraints baseTableName="attachments"/>
-        </rollback>
+        <dropAllForeignKeyConstraints baseTableName="albums"/>
     </changeSet>
 
 </databaseChangeLog>

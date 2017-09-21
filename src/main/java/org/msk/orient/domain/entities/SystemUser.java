@@ -1,9 +1,6 @@
 package org.msk.orient.domain.entities;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -14,6 +11,7 @@ import java.time.LocalDateTime;
  *         on 31.08.17.
  */
 @Entity
+@Table(name = "users")
 @Data
 public class SystemUser {
 
@@ -31,13 +29,18 @@ public class SystemUser {
     private String name;
     private String phone;
     private Boolean enabled;
+
+    @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime lastLogin;
 
     @NonNull
-    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime memberSince = LocalDateTime.now();
+
     private Boolean autoModerated;
 
+    @NonNull
     @OneToOne
-    private Attachment avatar;
+    private Attachment image;
 }

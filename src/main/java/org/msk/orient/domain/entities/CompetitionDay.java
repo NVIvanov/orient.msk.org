@@ -14,6 +14,7 @@ import java.time.LocalDate;
  */
 
 @Entity
+@Table(name = "competition_days")
 @Data
 public class CompetitionDay {
 
@@ -29,7 +30,12 @@ public class CompetitionDay {
     private String description;
 
     @NonNull
+    @Column(columnDefinition = "DATE")
     private LocalDate date;
+
+    @NonNull
+    @Column(columnDefinition = "POINT")
     private Point location;
     private String howToWay;
+    private String howToWayScheme;
 }

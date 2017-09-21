@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="documents_schema" author="nivanov">
+        <createTable tableName="documents">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(1000)"/>
+            <column name="competition_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="attachment_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="documents"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="documents_fk" author="nivanov">
+        <addForeignKeyConstraint baseTableName="documents"
+                                 baseColumnNames="competition_id"
+                                 constraintName="competition_fk"
+                                 referencedTableName="competitions"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="documents"
+                                 baseColumnNames="attachment_id"
+                                 constraintName="attachment_fk"
+                                 referencedTableName="attachments"
+                                 referencedColumnNames="id"/>
+        <dropAllForeignKeyConstraints baseTableName="documents"/>
+    </changeSet>
+
+</databaseChangeLog>

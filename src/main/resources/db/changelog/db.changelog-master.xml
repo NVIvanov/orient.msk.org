@@ -8,7 +8,7 @@
         <runningAs username="orientuser"/>
     </preConditions>
 
-    <include file="v1.0/2017-09-01-01-event-types-schema.xml" relativeToChangelogFile="true"/>
+    <include file="v1.0/v1.0-changelog.xml" relativeToChangelogFile="true"/>
 
 
 </databaseChangeLog>
