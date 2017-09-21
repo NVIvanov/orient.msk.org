@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="competition_days_schema" author="nivanov">
+        <createTable tableName="competition_days">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="competition_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(500)"/>
+            <column name="date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location" type="POINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="how_to_way" type="VARCHAR(2000)"/>
+            <column name="how_to_way_scheme" type="VARCHAR(200)"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="competition_days"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="competition_days_fk" author="nivanov">
+        <addForeignKeyConstraint baseTableName="competition_days"
+                                 baseColumnNames="competition_id"
+                                 constraintName="competition_fk"
+                                 referencedTableName="competitions"
+                                 referencedColumnNames="id"/>
+        <rollback>
+            <dropAllForeignKeyConstraints baseTableName="users"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

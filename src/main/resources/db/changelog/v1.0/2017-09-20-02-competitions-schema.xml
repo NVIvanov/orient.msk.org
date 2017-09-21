@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="competitions_schema" author="nivanov">
+        <createTable tableName="competitions">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(10000)"/>
+            <column name="site" type="VARCHAR(200)"/>
+            <column name="registration_link" type="VARCHAR(200)"/>
+            <column name="start_date" type="DATE"/>
+            <column name="finish_date" type="DATE"/>
+            <column name="location" type="VARCHAR(300)"/>
+            <column name="start_registration_date" type="DATE"/>
+            <column name="end_registration_date" type="DATE"/>
+            <column name="logo_id" type="BIGINT"/>
+            <column name="status_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="competitions"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="competitions_fk" author="nivanov">
+        <addForeignKeyConstraint baseTableName="competitions"
+                                 baseColumnNames="logo_id"
+                                 constraintName="logo_fk"
+                                 referencedTableName="attachments"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="competitions"
+                                 baseColumnNames="status_id"
+                                 constraintName="competition_statuses_fk"
+                                 referencedTableName="competition_statuses"
+                                 referencedColumnNames="id"/>
+        <rollback>
+            <dropAllForeignKeyConstraints baseTableName="competitions"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

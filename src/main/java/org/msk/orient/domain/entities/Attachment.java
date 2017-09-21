@@ -1,9 +1,6 @@
 package org.msk.orient.domain.entities;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -15,6 +12,7 @@ import java.time.LocalDateTime;
  */
 
 @Entity
+@Table(name = "attachments")
 @Data
 public class Attachment {
 
@@ -35,9 +33,11 @@ public class Attachment {
 
     @NonNull
     @Size(min = 1, max = 300)
+    @Column(name = "file_url")
     private String fileURL;
 
     @NonNull
-    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime creationTime = LocalDateTime.now();
 }

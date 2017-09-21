@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
  */
 
 @Entity
+@Table(name = "maps")
 @Data
 public class OrientMap {
 
@@ -28,6 +29,7 @@ public class OrientMap {
     private String description;
 
     @NonNull
+    @Column(columnDefinition = "POINT")
     private Point location;
 
     @NonNull

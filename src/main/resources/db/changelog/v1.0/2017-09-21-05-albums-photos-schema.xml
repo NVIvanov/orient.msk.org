@@ -4,20 +4,20 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-    <changeSet id="attachment_statuses_schema" author="nivanov">
-        <createTable tableName="attachment_types">
+    <changeSet id="albums_photos_schema" author="nivanov">
+        <createTable tableName="albums_photos">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="title" type="VARCHAR(100)">
+            <column name="photo_album_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="upload_file_mask" type="VARCHAR(100)">
+            <column name="photos_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
         <rollback>
-            <dropTable tableName="attachment_types"/>
+            <dropTable tableName="albums_photos"/>
         </rollback>
     </changeSet>
 

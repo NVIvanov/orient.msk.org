@@ -1,9 +1,6 @@
 package org.msk.orient.domain.entities;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,6 +11,7 @@ import java.time.LocalDateTime;
  */
 
 @Entity
+@Table(name = "comments")
 @Data
 public class Comment {
 
@@ -23,10 +21,15 @@ public class Comment {
     private String text;
 
     @NonNull
-    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime creationTime = LocalDateTime.now();
 
     @NonNull
     @ManyToOne
     private SystemUser author;
+
+    @NonNull
+    @ManyToOne
+    private Event event;
 }

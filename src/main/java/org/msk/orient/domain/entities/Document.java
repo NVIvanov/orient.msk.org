@@ -12,6 +12,7 @@ import java.util.List;
  */
 
 @Entity
+@Table(name = "documents")
 @Data
 public class Document {
 
@@ -20,6 +21,10 @@ public class Document {
     private Long id;
 
     @NonNull
-    @OneToMany
-    private List<Attachment> attachments;
+    @ManyToOne
+    private Attachment attachment;
+
+    @NonNull
+    @ManyToOne
+    private Competition competition;
 }
