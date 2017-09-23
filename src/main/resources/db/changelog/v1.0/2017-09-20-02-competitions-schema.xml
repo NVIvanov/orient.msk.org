@@ -38,12 +38,14 @@
                                  baseColumnNames="logo_id"
                                  constraintName="comp_to_logo_fk"
                                  referencedTableName="attachments"
-                                 referencedColumnNames="id"/>
+                                 referencedColumnNames="id"
+                                 onDelete="SET NULL"/>
         <addForeignKeyConstraint baseTableName="competitions"
                                  baseColumnNames="status_id"
                                  constraintName="comp_to_status_fk"
                                  referencedTableName="competition_statuses"
-                                 referencedColumnNames="id"/>
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"/>
         <rollback>
             <dropAllForeignKeyConstraints baseTableName="competitions"/>
         </rollback>

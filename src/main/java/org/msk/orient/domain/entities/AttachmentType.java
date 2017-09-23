@@ -1,6 +1,7 @@
 package org.msk.orient.domain.entities;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "attachment_types")
 @Data
+@NoArgsConstructor
 public class AttachmentType {
 
     @Id

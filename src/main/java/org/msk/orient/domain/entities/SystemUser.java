@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "users")
 @Data
+@NoArgsConstructor
 public class SystemUser {
 
     @Id
@@ -26,8 +27,13 @@ public class SystemUser {
     @NonNull
     private String password;
 
+    @NonNull
     private String name;
+
+    @NonNull
     private String phone;
+
+    @NonNull
     private Boolean enabled;
 
     @Column(columnDefinition = "TIMESTAMP")
@@ -38,7 +44,8 @@ public class SystemUser {
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime memberSince = LocalDateTime.now();
 
-    private Boolean autoModerated;
+    @NonNull
+    private Boolean autoModerated = false;
 
     @NonNull
     @OneToOne

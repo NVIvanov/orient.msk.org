@@ -26,12 +26,14 @@
                                  baseColumnNames="photo_album_id"
                                  constraintName="photo_album_fk"
                                  referencedTableName="albums"
-                                 referencedColumnNames="id"/>
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"/>
         <addForeignKeyConstraint baseTableName="albums_photos"
                                  baseColumnNames="photos_id"
                                  constraintName="photos_fk"
                                  referencedTableName="attachments"
-                                 referencedColumnNames="id"/>
+                                 referencedColumnNames="id"
+                                 onDelete="SET NULL"/>
         <rollback>
             <dropAllForeignKeyConstraints baseTableName="albums_photos"/>
         </rollback>

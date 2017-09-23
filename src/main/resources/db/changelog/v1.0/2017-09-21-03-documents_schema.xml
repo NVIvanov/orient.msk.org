@@ -30,12 +30,14 @@
                                  baseColumnNames="competition_id"
                                  constraintName="doc_to_comp_fk"
                                  referencedTableName="competitions"
-                                 referencedColumnNames="id"/>
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"/>
         <addForeignKeyConstraint baseTableName="documents"
                                  baseColumnNames="attachment_id"
                                  constraintName="doc_to_attachment_fk"
                                  referencedTableName="attachments"
-                                 referencedColumnNames="id"/>
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"/>
         <rollback>
             <dropAllForeignKeyConstraints baseTableName="documents"/>
         </rollback>

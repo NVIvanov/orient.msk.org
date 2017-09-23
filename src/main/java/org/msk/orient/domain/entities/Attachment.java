@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "attachments")
 @Data
+@NoArgsConstructor
 public class Attachment {
 
     @Id

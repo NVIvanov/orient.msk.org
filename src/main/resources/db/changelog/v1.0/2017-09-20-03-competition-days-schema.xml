@@ -32,7 +32,8 @@
                                  baseColumnNames="competition_id"
                                  constraintName="compday_to_comp_fk"
                                  referencedTableName="competitions"
-                                 referencedColumnNames="id"/>
+                                 referencedColumnNames="id"
+                                 onDelete="SET NULL"/>
         <rollback>
             <dropAllForeignKeyConstraints baseTableName="users"/>
         </rollback>

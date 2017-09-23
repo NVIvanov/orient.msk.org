@@ -1,9 +1,6 @@
 package org.msk.orient.domain.entities;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -20,6 +17,7 @@ import static java.lang.String.format;
 @Entity
 @Table(name = "events")
 @Data
+@NoArgsConstructor
 public class Event {
 
     @Id

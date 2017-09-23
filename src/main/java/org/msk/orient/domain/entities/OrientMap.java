@@ -1,6 +1,7 @@
 package org.msk.orient.domain.entities;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.springframework.data.geo.Point;
 
@@ -15,6 +16,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "maps")
 @Data
+@NoArgsConstructor
 public class OrientMap {
 
     @Id

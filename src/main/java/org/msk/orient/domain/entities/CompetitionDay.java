@@ -1,6 +1,7 @@
 package org.msk.orient.domain.entities;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.springframework.data.geo.Point;
 
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "competition_days")
 @Data
+@NoArgsConstructor
 public class CompetitionDay {
 
     @Id

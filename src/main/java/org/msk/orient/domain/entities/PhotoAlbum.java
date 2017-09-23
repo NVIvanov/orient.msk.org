@@ -1,9 +1,6 @@
 package org.msk.orient.domain.entities;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -18,6 +15,7 @@ import java.util.List;
 @Entity
 @Table(name = "albums")
 @Data
+@NoArgsConstructor
 public class PhotoAlbum {
 
     @Id

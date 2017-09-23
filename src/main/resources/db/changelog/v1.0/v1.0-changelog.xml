@@ -20,5 +20,7 @@
     <include file="db/changelog/v1.0/2017-09-21-06-attachment-types-data.xml"/>
     <include file="db/changelog/v1.0/2017-09-21-07-competition-statuses-data.xml"/>
     <include file="db/changelog/v1.0/2017-09-21-08-event-types-data.xml"/>
+    <include file="db/changelog/v1.0/2017-09-23-01-user-service-test-data.xml"/>
+    <include file="db/changelog/v1.0/2017-09-23-02-user-test-data.xml"/>
 
 </databaseChangeLog>

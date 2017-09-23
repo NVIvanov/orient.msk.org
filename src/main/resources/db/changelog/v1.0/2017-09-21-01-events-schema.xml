@@ -32,12 +32,14 @@
                                  baseColumnNames="competition_id"
                                  constraintName="events_to_comp_fk"
                                  referencedTableName="competitions"
-                                 referencedColumnNames="id"/>
+                                 referencedColumnNames="id"
+                                 onDelete="SET NULL"/>
         <addForeignKeyConstraint baseTableName="events"
                                  baseColumnNames="type_id"
                                  constraintName="event_to_type_fk"
                                  referencedTableName="event_types"
-                                 referencedColumnNames="id"/>
+                                 referencedColumnNames="id"
+                                 onDelete="SET NULL"/>
         <rollback>
             <dropAllForeignKeyConstraints baseTableName="events"/>
         </rollback>

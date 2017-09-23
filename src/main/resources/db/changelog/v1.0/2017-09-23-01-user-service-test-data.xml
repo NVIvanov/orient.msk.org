@@ -4,14 +4,14 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-    <changeSet id="event_types_data" author="nivanov" context="test">
-        <insert tableName="event_types">
-            <column name="description">Шаблон базового события</column>
-            <column name="event_pattern_text">Событие: {0}</column>
+    <changeSet id="user_service_data" author="nivanov" context="test">
+        <insert tableName="attachments">
+            <column name="type_id">1</column>
+            <column name="title">logo</column>
+            <column name="file_url">logo.png</column>
+            <column name="creation_time">NOW()</column>
         </insert>
-        <rollback>
-            <sql>TRUNCATE TABLE event_types;</sql>
-        </rollback>
     </changeSet>
+
 
 </databaseChangeLog>

@@ -46,7 +46,8 @@
         <addForeignKeyConstraint baseTableName="users"
                                  baseColumnNames="image_id"
                                  constraintName="user_to_logo_fk" referencedTableName="attachments"
-                                 referencedColumnNames="id"/>
+                                 referencedColumnNames="id"
+                                 onDelete="SET NULL"/>
         <rollback>
             <dropAllForeignKeyConstraints baseTableName="users"/>
         </rollback>

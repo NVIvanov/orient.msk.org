@@ -29,7 +29,8 @@
                                  baseColumnNames="type_id"
                                  constraintName="att_to_type_fk"
                                  referencedTableName="attachment_types"
-                                 referencedColumnNames="id"/>
+                                 referencedColumnNames="id"
+                                 onDelete="SET NULL"/>
         <rollback>
             <dropAllForeignKeyConstraints baseTableName="attachments"/>
         </rollback>

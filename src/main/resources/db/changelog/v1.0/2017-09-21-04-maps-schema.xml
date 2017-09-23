@@ -39,22 +39,26 @@
                                  baseColumnNames="preview_id"
                                  constraintName="map_to_preview_fk"
                                  referencedTableName="attachments"
-                                 referencedColumnNames="id"/>
+                                 referencedColumnNames="id"
+                                 onDelete="SET NULL"/>
         <addForeignKeyConstraint baseTableName="maps"
                                  baseColumnNames="low_quality_id"
                                  constraintName="map_to_low_quality_fk"
                                  referencedTableName="attachments"
-                                 referencedColumnNames="id"/>
+                                 referencedColumnNames="id"
+                                 onDelete="SET NULL"/>
         <addForeignKeyConstraint baseTableName="maps"
                                  baseColumnNames="high_quality_id"
                                  constraintName="map_to_high_quality_fk"
                                  referencedTableName="attachments"
-                                 referencedColumnNames="id"/>
+                                 referencedColumnNames="id"
+                                 onDelete="SET NULL"/>
         <addForeignKeyConstraint baseTableName="maps"
                                  baseColumnNames="author_id"
                                  constraintName="map_to_author_fk"
                                  referencedTableName="users"
-                                 referencedColumnNames="id"/>
+                                 referencedColumnNames="id"
+                                 onDelete="SET NULL"/>
         <rollback>
             <dropAllForeignKeyConstraints baseTableName="maps"/>
         </rollback>
